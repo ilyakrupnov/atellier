@@ -8,7 +8,7 @@ class SimpleElement extends React.Component {
   }
 }
 
-function getPropTypeName(validate) {
+function getPropTypeName(elementData) {
   const types = {
     array: [],
     string: '',
@@ -19,9 +19,10 @@ function getPropTypeName(validate) {
     element: (<SimpleElement />),
     oneOf: '____'
   };
+  console.log(elementData);
 
   for (let typeName in types) {
-    const errors = validate({'name': types[typeName]}, 'name');
+    const errors = PropTypes.checkPropTypes(elementData.propTypes, types[typeName], 'prop', elementData.name);
 
     if ( !errors ) {
       return {
@@ -112,9 +113,14 @@ class PropertiesContainer extends React.Component {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
     for (let prop in propTypes) {
-      console.log(prop, propTypes, propTypes[prop]);
       let proptype = propTypes[prop];
-      const { name, values, options } = getPropTypeName(proptype);
+      const elementData = {
+        name: element.displayName,
+        propTypes: {
+          [prop]: proptype
+        }
+      };
+      const { name, values, options } = getPropTypeName(elementData);
       const defaultProps = this._properties[prop] || values;
       const propOptions = proptype.options || options;
       propsFields.push(
