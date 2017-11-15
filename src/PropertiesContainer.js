@@ -124,7 +124,6 @@ class PropertiesContainer extends React.Component {
         propName: prop,
         name: element.type.displayName
       };
-      console.log(elementData);
       const { name, values, options } = getPropTypeName(elementData);
       const defaultProps = this._properties[prop] || values;
       const propOptions = proptype.options || options;
