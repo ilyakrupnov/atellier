@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0",
-    "react-dom": "^0.14.0 || ^15.0.0-0"
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -53,9 +53,9 @@
     "js-beautify": "^1.6.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
-    "react": ">=0.14.0",
+    "react": "^16.1.1",
     "react-ace": "^3.2.0",
-    "react-dom": ">=0.14.8",
+    "react-dom": "^16.1.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",

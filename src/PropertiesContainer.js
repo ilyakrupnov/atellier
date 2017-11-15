@@ -17,16 +17,16 @@ function getPropTypeName(validate) {
     func: () => {},
     object: {},
     element: (<SimpleElement />),
-    oneOf: "____"
-  }
+    oneOf: '____'
+  };
 
   for (let typeName in types) {
-    const errors = validate({"name": types[typeName]}, "name");
+    const errors = validate({'name': types[typeName]}, 'name');
 
     if ( !errors ) {
       return {
-        "name": typeName,
-        "values": typeName=='element'? undefined:types[typeName]
+        name: typeName,
+        values: typeName ==='element' ? undefined : types[typeName]
       };
     }
 
@@ -45,8 +45,8 @@ function getPropTypeName(validate) {
   }
 
   return {
-    "name": 'unknown',
-    "values": undefined
+    name: 'unknown',
+    values: undefined
   }
 }
 
