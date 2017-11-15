@@ -126,7 +126,7 @@ class PropertiesContainer extends React.Component {
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
       const elementData = {
-        typeSpecs: { prop: proptype },
+        typeSpecs: { [prop]: proptype },
         propName: prop,
         name: element.type.displayName
       };
