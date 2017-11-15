@@ -3,6 +3,7 @@ export default class PropTypesIdentifier {
 
   constructor(propTypes) {
     this.propTypes = propTypes;
+    console.log('lal');
   }
 
   static create(propTypes) {
