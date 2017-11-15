@@ -112,6 +112,7 @@ class PropertiesContainer extends React.Component {
   _renderPropertiesFields(element) {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
+    console.log(element);
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
       const elementData = {
