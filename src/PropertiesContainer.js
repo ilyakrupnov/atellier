@@ -19,10 +19,14 @@ function getPropTypeName(elementData) {
     element: (<SimpleElement />),
     oneOf: '____'
   };
-  console.log(elementData);
 
   for (let typeName in types) {
-    const errors = PropTypes.checkPropTypes(elementData.propTypes, types[typeName], 'prop', elementData.name);
+    const errors = PropTypes.checkPropTypes(
+      elementData.typeSpecs,
+      { [elementData.propName]: types[typeName] },
+      'prop',
+      elementData.name
+    );
 
     if ( !errors ) {
       return {
@@ -116,10 +120,9 @@ class PropertiesContainer extends React.Component {
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
       const elementData = {
-        name: element.displayName,
-        propTypes: {
-          [prop]: proptype
-        }
+        typeSpecs: { prop: proptype },
+        propName: prop,
+        name: element.type.displayName
       };
       const { name, values, options } = getPropTypeName(elementData);
       const defaultProps = this._properties[prop] || values;
