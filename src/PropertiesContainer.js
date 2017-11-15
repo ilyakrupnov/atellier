@@ -9,8 +9,6 @@ class SimpleElement extends React.Component {
 }
 
 function getPropTypeName(validate) {
-
-  console.log(validate);
   const types = {
     array: [],
     string: '',
@@ -114,6 +112,7 @@ class PropertiesContainer extends React.Component {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
     for (let prop in propTypes) {
+      console.log(prop, propTypes, propTypes[prop]);
       let proptype = propTypes[prop];
       const { name, values, options } = getPropTypeName(proptype);
       const defaultProps = this._properties[prop] || values;
