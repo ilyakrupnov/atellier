@@ -10,6 +10,7 @@ class SimpleElement extends React.Component {
 
 function getPropTypeName(validate) {
 
+  console.log(validate);
   const types = {
     array: [],
     string: '',
