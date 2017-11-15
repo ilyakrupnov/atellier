@@ -7,7 +7,7 @@ class ComponentList extends React.Component {
 
   static defaultProps = {
     components: [],
-    onSelect: PropTypes.func,
+    onSelect() {},
     stagedComponent: {}
   };
 
