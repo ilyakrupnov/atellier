@@ -27,6 +27,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1"
   },
@@ -54,6 +55,7 @@
     "js-beautify": "^1.6.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-ace": "^3.2.0",
     "react-dom": "^16.1.1",

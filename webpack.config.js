@@ -11,9 +11,13 @@ module.exports = {
     libraryTarget: 'umd',
   },
   externals: {
-      // Use external version of React
-      'react': 'react',
-      'react-dom': 'react-dom'
+    'react': 'react',
+    'react-dom': 'react-dom',
+    'prop-types': {
+      commonjs2: 'prop-types',
+      commonjs: 'prop-types',
+      amd: 'prop-types'
+    },
   },
   module: {
     loaders: [
