@@ -11,18 +11,18 @@ import 'brace/theme/twilight';
 class FieldType extends React.Component {
 
   static propTypes = {
-    // defaultValue: PropTypes.any,
-    // name: PropTypes.string,
-    // onChange: PropTypes.func,
-    // type: PropTypes.string.isRequired,
-    // options: PropTypes.any
+    defaultValue: PropTypes.any,
+    name: PropTypes.string,
+    onChange: PropTypes.func,
+    type: PropTypes.string.isRequired,
+    options: PropTypes.any
   };
 
   static defaultProps = {
-    // name: '',
-    // type: 'string',
-    // defaultValue: null,
-    // onChange: PropTypes.func
+    name: '',
+    type: 'string',
+    defaultValue: null,
+    onChange: PropTypes.func
   };
 
   constructor(props) {
