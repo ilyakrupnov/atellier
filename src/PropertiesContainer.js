@@ -28,35 +28,23 @@ function getPropTypeName(elementData) {
         'prop',
         elementData.name
       );
-    } catch (err) {
-      console.log(err);
-    }
-
-    const errors = PropTypes.checkPropTypes(
-      elementData.typeSpecs,
-      { [elementData.propName]: types[typeName] },
-      'prop',
-      elementData.name
-    );
-
-    if ( !errors ) {
       return {
         name: typeName,
         values: typeName ==='element' ? undefined : types[typeName]
       };
-    }
+    } catch (err) {
+      switch(true) {
+        case /one of/.test(errors):
+          let oneOfArray = /expected one of (\[.*\])/.exec(errors);
 
-    switch(true) {
-      case /one of/.test(errors):
-        let oneOfArray = /expected one of (\[.*\])/.exec(errors);
-
-        if (oneOfArray && oneOfArray[1]) {
-          return {
-            name: 'oneOf',
-            options: JSON.parse(oneOfArray[1]) || []
-          };
-        }
-        break;
+          if (oneOfArray && oneOfArray[1]) {
+            return {
+              name: 'oneOf',
+              options: JSON.parse(oneOfArray[1]) || []
+            };
+          }
+          break;
+      }
     }
   }
 
