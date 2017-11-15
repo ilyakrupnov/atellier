@@ -21,6 +21,12 @@ function getPropTypeName(elementData) {
   };
 
   for (let typeName in types) {
+    console.log(
+      elementData.typeSpecs,
+      { [elementData.propName]: types[typeName] },
+      'prop',
+      elementData.name
+    );
     const errors = PropTypes.checkPropTypes(
       elementData.typeSpecs,
       { [elementData.propName]: types[typeName] },
