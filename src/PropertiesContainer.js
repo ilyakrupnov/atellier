@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import checkPropTypes from 'check-prop-types';
 import FieldType from './FieldType';
 
 class SimpleElement extends React.Component {
@@ -21,30 +22,31 @@ function getPropTypeName(elementData) {
   };
 
   for (let typeName in types) {
-    try {
-      PropTypes.checkPropTypes(
-        elementData.typeSpecs,
-        { [elementData.propName]: types[typeName] },
-        'prop',
-        elementData.name
-      );
+    const errors = checkPropTypes(
+      elementData.typeSpecs,
+      { [elementData.propName]: types[typeName] },
+      'prop',
+      elementData.name
+    );
+
+    if ( !errors ) {
       return {
         name: typeName,
         values: typeName ==='element' ? undefined : types[typeName]
       };
-    } catch (err) {
-      switch(true) {
-        case /one of/.test(errors):
-          let oneOfArray = /expected one of (\[.*\])/.exec(errors);
+    }
 
-          if (oneOfArray && oneOfArray[1]) {
-            return {
-              name: 'oneOf',
-              options: JSON.parse(oneOfArray[1]) || []
-            };
-          }
-          break;
-      }
+    switch(true) {
+      case /one of/.test(errors):
+        let oneOfArray = /expected one of (\[.*\])/.exec(errors);
+
+        if (oneOfArray && oneOfArray[1]) {
+          return {
+            name: 'oneOf',
+            options: JSON.parse(oneOfArray[1]) || []
+          };
+        }
+        break;
     }
   }
 
@@ -115,7 +117,6 @@ class PropertiesContainer extends React.Component {
   _renderPropertiesFields(element) {
     let propTypes = element && element.type.propTypes;
     let propsFields = [];
-    console.log(element);
     for (let prop in propTypes) {
       let proptype = propTypes[prop];
       const elementData = {
@@ -123,6 +124,7 @@ class PropertiesContainer extends React.Component {
         propName: prop,
         name: element.type.displayName
       };
+      console.log(elementData);
       const { name, values, options } = getPropTypeName(elementData);
       const defaultProps = this._properties[prop] || values;
       const propOptions = proptype.options || options;
