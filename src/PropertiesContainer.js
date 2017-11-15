@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import FieldType from './FieldType';
 
 class SimpleElement extends React.Component {
