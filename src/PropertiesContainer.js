@@ -14,7 +14,7 @@ function getPropTypeName(elementData) {
     array: [],
     string: '',
     number: 0,
-    bool: true,
+    bool: false,
     func: () => {},
     object: {},
     element: (<SimpleElement />),
@@ -159,6 +159,7 @@ class PropertiesContainer extends React.Component {
   };
 
   _defineProperties = (props) => {
+    console.log(props);
     if ( props.element.type ) {
       try{
         Object.keys(props.element.type.propTypes).filter( function(prop) {
