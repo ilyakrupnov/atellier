@@ -159,7 +159,6 @@ class PropertiesContainer extends React.Component {
   };
 
   _defineProperties = (props) => {
-    console.log(props);
     if ( props.element.type ) {
       try{
         Object.keys(props.element.type.propTypes).filter( function(prop) {
